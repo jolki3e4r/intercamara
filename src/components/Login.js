@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import index from '../index.css';
+import users from '../components/users.json'
 
 class login extends Component {
 
@@ -11,23 +12,17 @@ class login extends Component {
     }
   }
  
- infoUser = ( username, password) => {
-     this.setState (prevState => ({
-         login:{
-             ...prevState.login,
-             [username]:'admin',
-             [password]:'12345'
-         }
-     }))  
- }
+ 
 
-
-handleSubmit = event =>{
-    event.preventDefault()
-    if (this.){
-
-    }
-
+onSubmit =()=>{
+    const { username , password} = this.setState.login;
+    const res = users.find(data =>{
+        if (data.user=== username && data.password === password){
+            return true  
+        } else{
+            return false
+        }
+    })
 }
 
 
@@ -61,15 +56,15 @@ handleSubmit = event =>{
                   <h4 className="text-muted text-center m-t-0"><b>Sign In</b></h4>
 
                   <form className="form-horizontal m-t-8"
-                    onSubmit={ this.handleSubmit} >
+                    onSubmit={ this.onSubmit} >
 
                       <div className="form-group">
                           <div className="col-xs-12">
                               <input 
-                                    class="form-control"
+                                    className="form-control"
                                     type="text"
-                                    value={this.state.login.username}
                                     required="" 
+                                    id="username"
                                     onChange={this.handleOnChange}
                                     placeholder="Usuario"
                                     ></input>
@@ -80,9 +75,9 @@ handleSubmit = event =>{
                           <div className="col-xs-12">
                               <input 
                                     className="form-control"
-                                    value={this.state.login.password}
                                     type="password"
                                     required=""
+                                    id="password"
                                     placeholder="Contraseña"
                                     onChange={this.handleOnChange}
                                     ></input>
@@ -92,7 +87,9 @@ handleSubmit = event =>{
                       <div className="form-group">
                           <div className="col-xs-12">
                               <div className="checkbox checkbox-primary">
-                                  <input id="checkbox-signup" type="checkbox"></input>
+                                  <input id="checkbox-signup"
+                                   type="checkbox">
+                                   </input>
                                   <label for="checkbox-signup">
                                       Remember me
                                   </label>

@@ -1,34 +1,61 @@
 import React, { Component } from 'react';
+import info from '../components/respuesta.json'
 
 class inicio extends Component {
+    constructor () {
 
+        super()
+        this.state={
+            nombreEmpresa:'',
+            password:''
+           
+            }
+          }
+    
+
+    
     onSubmit = (event) =>{
         event.preventDefault()
         
-        let ipCamenra= event.target.elements[0].value
+        let ipCamera= event.target.elements[0].value
         let password = event.target.elements[1].value
-        console.log('daos capturados', ipCamenra , password)
+        console.log('datos capturados', ipCamera , password)
         
         let url= `http://${ipCamera}:8090/getDeviceKey`
 
-        fetch(url, {
-        method: 'POST', 
-        headers:{
-            'Content-Type': 'application/json'
-        }
-        }).then(res => res.json())
-        .catch(error => console.error('Error:', error))
-        .then(response => console.log('Success:', response));
+        console.log('respuesta',info)
+        this.setState({
+            password: password,
+            nombreEmpresa: info.CompanyName
+
+        
+        })
+        
+        // fetch(url, {
+        // method: 'POST', 
+        // headers:{
+        //     'Content-Type': 'application/json'
+        // }
+        // }).then(res => res.json())
+        // .catch(error => console.error('Error:', error))
+        // .then(response => console.log('Success:', response));
 
     }
 
-
-
+    onChangeName = (event)  =>{
+        console.log('evento',event)
+        const nombreempresa = event.target.value
+        console.log('compañia', nombreempresa)
+        this.setState({
+            // "password":password
+        })
+    }
+   
 
     render() { 
         return (  
             <>
-            <h1>Esta es la pagina de inicio </h1>
+            <h1>Bienvenido Admin </h1>
             <form className="form-inline" onSubmit={ this.onSubmit} >
                 <div class="form-group mb-2">
                     <label htmlFor="staticEmail2" className="sr-only">Ip de la camara</label>
@@ -47,6 +74,13 @@ class inicio extends Component {
                 <button type="submit"
                         className="btn btn-primary mb-2">Confirmar </button>
             </form>
+        <h2>en monbre de la compañia es: {info.CompanyName}</h2>
+        <form>
+            <input type="text"
+            onChange={this.onChangeName}
+            value={this.state.nombreEmpresa}/>
+        </form>
+
             </>
         );
     }

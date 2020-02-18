@@ -17,18 +17,14 @@ constructor () {
 }
 
 
- 
- 
-
 onSubmit =(event)=>{
     event.preventDefault()
     console.log('event:',event.target.elements)
     let username = event.target.elements[0].value
     let password = event.target.elements[1].value
     console.log(username,password)
-    // const { username , password} = this.setState.login;
     const res = users.find(data =>{
-        console.log('datos',data)
+        
         if (data.username === username && data.password === password){
             console.log('usuario correcto ',this.props)
             this.props.history.push('/inicio')
@@ -56,9 +52,6 @@ onSubmit =(event)=>{
       error: null
     })
   }
-
-
-
 
   render() { 
     return ( 

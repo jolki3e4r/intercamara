@@ -60,7 +60,7 @@ class inicio extends Component {
                 <div class="form-group mb-2">
                     <label htmlFor="staticEmail2" className="sr-only">Ip de la camara</label>
                     <input type="text"
-                        readonly className="form-control-plaintext"
+                        className="form-control"
                         id="ipCamera" 
                         placeholder="ip de camara"/>
                 </div>
@@ -72,13 +72,25 @@ class inicio extends Component {
                           placeholder="Password"/>
                 </div>
                 <button type="submit"
-                        className="btn btn-primary mb-2">Confirmar </button>
+                        className="btn btn-primary mb-2">
+                        Confirmar 
+                </button>
             </form>
         <h2>en monbre de la compañia es: {info.CompanyName}</h2>
-        <form>
-            <input type="text"
-            onChange={this.onChangeName}
-            value={this.state.nombreEmpresa}/>
+        <form className="form-inline">
+        <div className="form-group mx-sm-3 mb-2">
+                    <label htmlFor="inputPassword2" className="sr-only">actuaizar</label>
+                    <input type="text"
+                          className="form-control"
+                          onChange={this.onChangeName}
+                          value={this.state.nombreEmpresa}
+                          id="NuevoNombre"
+                          placeholder="Nuevo Nombre"/>
+                </div>
+                <button type="submit"
+                        className="btn btn-primary mb-2">
+                        Actualizar Nombre 
+                </button>
         </form>
 
             </>

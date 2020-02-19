@@ -57,16 +57,16 @@ onSubmit =(event)=>{
     return ( 
       
       <div className="accountbg">
-      <div className="wrapper-page">
-          <div className="panel panel-color panel-primary panel-pages">
+      <div className="wrapper-page mx-auto">
+          <div className="panel panel-color panel-primary panel-pages ">
 
-              <div className="form-group col-md-6">
+              <div className="form-group col-md-6 ">
                   <h3 className="text-center m-t-0 m-b-30">
                       <span className=""></span>
                   </h3>
                   <h4 className="text-muted text-center m-t-0"><b>Sign In</b></h4>
 
-                  <form className="form-horizontal m-t-8"
+                  <form className="form-horizontal col-md-auto"
                     onSubmit={ this.onSubmit} >
 
                       <div className="form-group">

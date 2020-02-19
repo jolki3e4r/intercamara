@@ -50,7 +50,12 @@ class inicio extends Component {
             // "password":password
         })
     }
-   
+   onUpdate =(event) =>{
+    event.preventDefault()
+       console.log('evento de actualizacion',event)
+       const nombreUpdate = event.target.value
+
+   }
 
     render() { 
         return (  
@@ -77,7 +82,7 @@ class inicio extends Component {
                 </button>
             </form>
         <h2>en monbre de la compañia es: {info.CompanyName}</h2>
-        <form className="form-inline">
+        <form className="form-inline" onUpdate={this.onUpdate}>
         <div className="form-group mx-sm-3 mb-2">
                     <label htmlFor="inputPassword2" className="sr-only">actuaizar</label>
                     <input type="text"
